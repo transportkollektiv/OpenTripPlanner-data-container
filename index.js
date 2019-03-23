@@ -69,15 +69,10 @@ async function update () {
         process.stdout.write('Executing deploy script.\n')
         execFileSync('./deploy.sh', [router],
           {
-            env:
+            env: Object.assign({}, process.env,
               {
-                DOCKER_USER: process.env.DOCKER_USER,
-                DOCKER_AUTH: process.env.DOCKER_AUTH,
-                DOCKER_TAG: process.env.DOCKER_TAG,
                 TEST_TAG: process.env.OTP_TAG || '',
-                TOOLS_TAG: process.env.TOOLS_TAG || '',
-                DOCKER_API_VERSION: process.env.DOCKER_API_VERSION
-              },
+              }),
             stdio: [0, 1, 2]
           }
         )
