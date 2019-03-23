@@ -7,6 +7,16 @@
  */
 const src = (id, url, fit, rules) => ({ id, url, fit, rules })
 
+const HB_CONFIG = {
+  'id': 'hb',
+  'src': [
+    src('naldo', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-naldo_2019-08-03-05--2018-08-06.zip', false),
+    src('VGC', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-vgc-calw-2019-03-07--2019-06-08.zip', false),
+    src('vgf', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/vgf-gtfs_2019-03-09--2019-06-08.zip', false)
+  ],
+  'osm': 'hb'
+}
+
 const HSL_CONFIG = {
   'id': 'hsl',
   'src': [
@@ -60,7 +70,7 @@ const WALTTI_CONFIG = {
 let ALL_CONFIGS
 
 const setCurrentConfig = (name) => {
-  ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG].reduce((acc, nxt) => {
+  ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG, HB_CONFIG].reduce((acc, nxt) => {
     if ((name && name.split(',').indexOf(nxt.id) !== -1) ||
       name === undefined) {
       acc.push(nxt)
@@ -126,7 +136,8 @@ const configMap = ALL_CONFIGS.map(cfg => cfg.src)
 
 const osm = [
   { id: 'finland', url: 'http://dev.hsl.fi/osm.finland/finland.osm.pbf' },
-  { id: 'hsl', url: 'http://dev.hsl.fi/osm.hsl/hsl.osm.pbf' }
+  { id: 'hsl', url: 'http://dev.hsl.fi/osm.hsl/hsl.osm.pbf' },
+  { id: 'hb', url: 'https://download.geofabrik.de/europe/germany/baden-wuerttemberg/tuebingen-regbez-latest.osm.pbf' }
 ]
 
 const dem = [

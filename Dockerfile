@@ -17,6 +17,7 @@ ADD task /opt/otp-data-builder/task
 ADD router-finland /opt/otp-data-builder/router-finland
 ADD router-hsl /opt/otp-data-builder/router-hsl
 ADD router-waltti /opt/otp-data-builder/router-waltti
+ADD router-hb /opt/otp-data-builder/router-hb
 ADD otp-data-container /opt/otp-data-builder/otp-data-container
 
 RUN npm install
