@@ -71,15 +71,15 @@ module.exports = {
       }
       const osmFile = `${dataDir}/ready/osm/finland.pbf`
 
-      if (!fs.existsSync(osmFile)) {
-        process.stdout.write(`${osmFile} not available, skipping ${gtfsFile}\n`)
-        callback(null, null)
-        return
-      }
       if (config.fit === false) {
         process.stdout.write(gtfsFile + ' fit skipped\n')
         callback(null, file)
       } else {
+        if (!fs.existsSync(osmFile)) {
+          process.stdout.write(`${osmFile} not available, skipping ${gtfsFile}\n`)
+          callback(null, null)
+          return
+        }
         let script = ''
         if (config.fit === true) {
           script = 'gtfs_shape_mapfit/fit_gtfs.bash'
