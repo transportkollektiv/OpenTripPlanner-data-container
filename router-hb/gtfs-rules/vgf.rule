@@ -22,6 +22,6 @@
 
 # Add missing stop:
 # 8901060,"Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)",,48.0078205837951,8.91651581341923,
-#{"op":"add","obj":{"file":"stops.txt", "stop_id":"8901060", "stop_name": "Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)", "platform_code": "", "stop_lat": "48.0078205837951", "stop_lon": "8.91651581341923", "stop_source": ""}}
+#{"op":"add","obj":{"file":"stops.txt", "stop_id":"8901060", "stop_name": "Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)", "platform_code": "", "stop_lat": "48.0078205837951", "stop_lon": "8.91651581341923"}}
 # using the update operation here, because gtfstransformer cannot handle missing items
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"8901060"}, "update":{"stop_name": "Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)", "platform_code": "", "stop_lat": "48.0078205837951", "stop_lon": "8.91651581341923", "stop_source": ""}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"8901060"}, "update":{"stop_name": "Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)", "platform_code": "", "stop_lat": "48.0078205837951", "stop_lon": "8.91651581341923"}}
