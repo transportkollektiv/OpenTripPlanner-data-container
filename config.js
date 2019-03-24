@@ -10,9 +10,9 @@ const src = (id, url, fit, rules) => ({ id, url, fit, rules })
 const HB_CONFIG = {
   'id': 'hb',
   'src': [
-    src('naldo', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-naldo_2019-08-03-05--2018-08-06.zip', false),
-    src('VGC', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-vgc-calw-2019-03-07--2019-06-08.zip', false),
-    src('vgf', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/vgf-gtfs_2019-03-09--2019-06-08.zip', false)
+    src('naldo', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-naldo_2019-08-03-05--2018-08-06.zip', false, ['router-hb/grfs-rules/naldo.rule']),
+    src('VGC', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-vgc-calw-2019-03-07--2019-06-08.zip', false, ['router-hb/grfs-rules/vgc.rule']),
+    src('vgf', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/vgf-gtfs_2019-03-09--2019-06-08.zip', false, ['router-hb/grfs-rules/vgf.rule'])
   ],
   'osm': 'hb'
 }

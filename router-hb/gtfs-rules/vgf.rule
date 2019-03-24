@@ -1,0 +1,21 @@
+## Fix missing lat/lon:
+
+# de:08237:30965,Nordstetten Josef-Hezel-Straße,,,,onses/7305001_1.json
+# de:08237:5122,Eutingen im Gäu Daimlerstraße,,,,onses/7305001_1.json
+# de:08237:7715,Nordstetten Schule,,,,onses/7305001_1.json
+# de:08237:8032,Eyach Sommerhalde,,,,nses/7305001_10.json
+
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:30965"}, "update":{"stop_lat":"48.440657", "stop_lon":"8.701297"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:5122"}, "update":{"stop_lat":"48.47754", "stop_lon":"8.74097"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:7715"}, "update":{"stop_lat":"48.436585", "stop_lon":"8.698151"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:8032"}, "update":{"stop_lat":"48.449008", "stop_lon":"8.784465"}}
+
+# de:08237:4004,Dornstetten Hochgericht,,,,onses/7108055_1.json
+# de:08237:4506,Pfalzgrafenweiler Sportanlagen,,,,onses/7301002_1.json
+# de:08237:4645,Bösingen Ortsausgang,,,,onses/7301002_1.json
+# de:08237:9081,Nordstetten Taberwasen,,,,onses/7305001_1.json
+
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4004"}, "update":{"stop_lat":"48.474133", "stop_lon":"8.488702"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4506"}, "update":{"stop_lat":"48.530459", "stop_lon":"8.577677"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4645"}, "update":{"stop_lat":"48.538909", "stop_lon":"8.596061"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:9081"}, "update":{"stop_lat":"48.425618", "stop_lon":"8.717765"}}

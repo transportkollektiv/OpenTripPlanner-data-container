@@ -1,0 +1,11 @@
+## Fix missing lat/lon:
+
+# de:08237:4004,Dornstetten Hochgericht,,,,nses/7210214_26.json
+# de:08237:4506,Pfalzgrafenweiler Sportanlagen,,,,nses/7210214_26.json
+# de:08237:4645,Bösingen Ortsausgang,,,,nses/7210214_26.json
+# de:08237:5122,Eutingen im Gäu Daimlerstraße,,,,nses/7210327_74.json
+
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4004"}, "update":{"stop_lat":"48.474133", "stop_lon":"8.488702"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4506"}, "update":{"stop_lat":"48.530459", "stop_lon":"8.577677"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4645"}, "update":{"stop_lat":"48.538909", "stop_lon":"8.596061"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:5122"}, "update":{"stop_lat":"48.47754", "stop_lon":"8.74097"}}
