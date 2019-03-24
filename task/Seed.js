@@ -21,7 +21,8 @@ module.exports = function (configs, regexp) {
     } catch (err) {
       process.stdout.write(`Image ${container} is unknown`)
       process.stdout.write(err)
-      throw err
+      stream.end()
+      return
     }
     const script =
   `docker rmi --force ${container} || true;

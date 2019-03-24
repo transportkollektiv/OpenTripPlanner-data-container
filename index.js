@@ -38,7 +38,8 @@ start('seed').then(() => {
   }
 }).catch((err) => {
   process.stdout.write(err + '\n')
-  process.exit(1)
+  //process.exit(1)
+  update()
 })
 
 async function update () {
