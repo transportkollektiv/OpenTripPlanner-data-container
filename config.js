@@ -137,7 +137,7 @@ const configMap = ALL_CONFIGS.map(cfg => cfg.src)
 const osm = [
   { id: 'finland', url: 'http://dev.hsl.fi/osm.finland/finland.osm.pbf' },
   { id: 'hsl', url: 'http://dev.hsl.fi/osm.hsl/hsl.osm.pbf' },
-  { id: 'hb', url: 'https://download.geofabrik.de/europe/germany/baden-wuerttemberg/stuttgart-regbez-latest.osm.pbf' }
+  { id: 'hb', url: 'https://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf' }
 ]
 
 const dem = [
