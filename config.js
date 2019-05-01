@@ -10,9 +10,9 @@ const src = (id, url, fit, rules) => ({ id, url, fit, rules })
 const HB_CONFIG = {
   'id': 'hb',
   'src': [
-    src('naldo', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-naldo_2019-08-03-05--2018-08-06.stopsnull.zip', false, ['router-hb/gtfs-rules/naldo.rule']),
-    src('vgc', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-vgc-calw-2019-03-07--2019-06-08.stopsnull.zip', false, ['router-hb/gtfs-rules/vgc.rule']),
-    src('vgf', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/vgf-gtfs_2019-03-09--2019-06-08.stopsnull.zip', false, ['router-hb/gtfs-rules/vgf.rule'])
+    src('naldo', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-naldo_2019-08-03-05--2018-08-06.shapes.zip', false, ['router-hb/gtfs-rules/naldo.rule']),
+    src('vgc', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/gtfs-vgc-calw-2019-03-07--2019-06-08.shapes.zip', false, ['router-hb/gtfs-rules/vgc.rule']),
+    src('vgf', 'http://s3.v22019038053785283.megasrv.de/hb-gtfs/vgf-gtfs_2019-03-09--2019-06-08.shapes.zip', false, ['router-hb/gtfs-rules/vgf.rule'])
   ],
   'osm': 'hb'
 }
