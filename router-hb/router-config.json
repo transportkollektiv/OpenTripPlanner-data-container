@@ -8,7 +8,8 @@
       "walkReluctance": 1.75,
       "stairsReluctance": 1.65,
       "walkBoardCost": 540,
-      "walkOnStreetReluctance": 1.5,
+      // Ignore walkOnStreetReluctance as implementation is too simple and causes unexpected detours
+      // "walkOnStreetReluctance": 1.5,
       "carParkCarLegWeight": 2,
       "itineraryFiltering": 1.0
   },
