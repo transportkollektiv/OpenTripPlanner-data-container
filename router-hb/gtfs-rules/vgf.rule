@@ -1,32 +1,29 @@
-## Fix missing lat/lon:
+## Fix missing lat/lon, wrong stop ids/names:
 
-# de:08237:30965,Nordstetten Josef-Hezel-Straße,,,,onses/7305001_1.json
-# de:08237:5122,Eutingen im Gäu Daimlerstraße,,,,onses/7305001_1.json
-# de:08237:7715,Nordstetten Schule,,,,onses/7305001_1.json
-# de:08237:8032,Eyach Sommerhalde,,,,nses/7305001_10.json
+# grep "000000" -r */stops.txt
+# vgf.gtfs/stops.txt:de:08237:1065:0:1,FDS Berufsschule,0.000000,0.000000
+# vgf.gtfs/stops.txt:de:08237:1065:0:2,FDS Berufsschule,0.000000,0.000000
+# vgf.gtfs/stops.txt:de:08237:4004,Dornstetten Hochgericht,0.000000,0.000000
+# vgf.gtfs/stops.txt:de:08237:4352:0:4,Lützenhardt ZOB,0.000000,0.000000
+# vgf.gtfs/stops.txt:de:08237:4506,Pfalzgrafenweiler Sportanlagen,0.000000,0.000000
+# vgf.gtfs/stops.txt:de:08237:4645,Bösingen Ortsausgang,0.000000,0.000000
+# vgf.gtfs/stops.txt:gen:8237:3335,Betzweiler Betrieb,0.000000,0.000000
+# vgf.gtfs/stops.txt:gen:8237:4005:1:2,Dornstetten ZOB,0.000000,0.000000
+# vgf.gtfs/stops.txt:gen:8237:4005:1:4,Dornstetten ZOB,0.000000,0.000000
+# vgf.gtfs/stops.txt:gen:8237:4005:1:5,Dornstetten ZOB,0.000000,0.000000
+# vgf.gtfs/stops.txt:gen:8237:4005:1:6,Dornstetten ZOB,0.000000,0.000000
+# vgf.gtfs/stops.txt:gen:8325:9131,Dornhan Feuerwehr,0.000000,0.000000
 
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:30965"}, "update":{"stop_lat":"48.440657", "stop_lon":"8.701297"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:5122"}, "update":{"stop_lat":"48.47754", "stop_lon":"8.74097"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:7715"}, "update":{"stop_lat":"48.436585", "stop_lon":"8.698151"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:8032"}, "update":{"stop_lat":"48.449008", "stop_lon":"8.784465"}}
-
-# de:08237:4004,Dornstetten Hochgericht,,,,onses/7108055_1.json
-# de:08237:4506,Pfalzgrafenweiler Sportanlagen,,,,onses/7301002_1.json
-# de:08237:4645,Bösingen Ortsausgang,,,,onses/7301002_1.json
-# de:08237:9081,Nordstetten Taberwasen,,,,onses/7305001_1.json
-
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:1065:0:1"}, "update":{"stop_lat":"48.469387", "stop_lon":"8.417926", "stop_id": "de:08237:1101:0:1"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:1065:0:2"}, "update":{"stop_lat":"48.469387", "stop_lon":"8.417926", "stop_id": "de:08237:1101:0:2"}}
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4004"}, "update":{"stop_lat":"48.474133", "stop_lon":"8.488702"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4352:0:4"}, "update":{"stop_lat":"48.4860261716506", "stop_lon":"8.565269769834273", "stop_id": "de:08237:4401"}}
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4506"}, "update":{"stop_lat":"48.530459", "stop_lon":"8.577677"}}
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4645"}, "update":{"stop_lat":"48.538909", "stop_lon":"8.596061"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:9081"}, "update":{"stop_lat":"48.425618", "stop_lon":"8.717765"}}
-
-# Add missing stop:
-# 8901060,"Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)",,48.0078205837951,8.91651581341923,
-#{"op":"add","obj":{"file":"stops.txt", "stop_id":"8901060", "stop_name": "Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)", "platform_code": "", "stop_lat": "48.0078205837951", "stop_lon": "8.91651581341923"}}
-# using the update operation here, because gtfstransformer cannot handle missing items
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"8901060"}, "update":{"stop_name": "Fridingen a.d.Donau, Bergsteig (Ri. Tut./Neuh.)", "platform_code": "", "stop_lat": "48.0078205837951", "stop_lon": "8.91651581341923"}}
-
-# (temp) fix calendar
-{"op":"update", "match": {"file":"calendar.txt", "service_id":"1"}, "update":{"start_date":"20190309", "end_date":"20190608"}}
-{"op":"update", "match": {"file":"calendar.txt", "service_id":"6"}, "update":{"start_date":"20190309", "end_date":"20190608"}}
-{"op":"update", "match": {"file":"calendar.txt", "service_id":"7"}, "update":{"start_date":"20190309", "end_date":"20190608"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8237:3335"}, "update":{"stop_lat":"48.36568038549475", "stop_lon":"8.48193022090397","stop_id": "de:08237:3331", "stop_name":"Betzweiler Cafe Walter"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8237:4005:1:2"}, "update":{"stop_lat":"48.469958", "stop_lon":"8.501346", "stop_id": "de:08237:4005:1:2"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8237:4005:1:4"}, "update":{"stop_lat":"48.469958", "stop_lon":"8.501346", "stop_id": "de:08237:4005:1:4"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8237:4005:1:5"}, "update":{"stop_lat":"48.469958", "stop_lon":"8.501346", "stop_id": "de:08237:4005:1:5"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8237:4005:1:6"}, "update":{"stop_lat":"48.469958", "stop_lon":"8.501346", "stop_id": "de:08237:4005:1:6"}}
+# gen:8325:9131 See https://www.vvr-info.de/fps/f19_hr_stand_20181209.pdf
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8325:9131"}, "update":{"stop_lat":"48.351671", "stop_lon":"8.502698","stop_id": "de:08325:27090", "stop_name":"Dornhan Freudenst. Straße"}}

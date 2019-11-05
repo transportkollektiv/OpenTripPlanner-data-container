@@ -1,16 +1,32 @@
 ## Fix missing lat/lon:
 
-# de:08237:4004,Dornstetten Hochgericht,,,,nses/7210214_26.json
-# de:08237:4506,Pfalzgrafenweiler Sportanlagen,,,,nses/7210214_26.json
-# de:08237:4645,Bösingen Ortsausgang,,,,nses/7210214_26.json
-# de:08237:5122,Eutingen im Gäu Daimlerstraße,,,,nses/7210327_74.json
+# grep "000000" -r */stops.txt
+# vgc.gtfs/stops.txt:de:08235:10449:0:4,"Nagold, Uferstr.",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:10451:0:3,"Nagold, Kreuzertal",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:3181:0:3,"Speßhardt, Friedhof",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:5660:2:3,"Neuenbürg, Eyachbrücke",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:5660:2:4,"Neuenbürg, Eyachbrücke",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:7330:0:3,"Wildberg, Bildungszentr.",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:7330:0:4,"Wildberg, Bildungszentr.",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:7330:0:5,"Wildberg, Bildungszentr.",0.000000,0.000000
+# vgc.gtfs/stops.txt:de:08235:7330:0:7,"Wildberg, Bildungszentr.",0.000000,0.000000
+# vgc.gtfs/stops.txt:gen:8235:10263:0:3,"Unterschwandorf, Löwen",0.000000,0.000000
+# vgc.gtfs/stops.txt:gen:8235:2730:0:3,"Enzkl., Adventure Golfpark",0.000000,0.000000
+# vgc.gtfs/stops.txt:gen:8235:2730:0:4,"Enzkl., Adventure Golfpark",0.000000,0.000000
 
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4004"}, "update":{"stop_lat":"48.474133", "stop_lon":"8.488702"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4506"}, "update":{"stop_lat":"48.530459", "stop_lon":"8.577677"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:4645"}, "update":{"stop_lat":"48.538909", "stop_lon":"8.596061"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08237:5122"}, "update":{"stop_lat":"48.47754", "stop_lon":"8.74097"}}
-
-# (temp) fix calendar
-{"op":"update", "match": {"file":"calendar.txt", "service_id":"1"}, "update":{"start_date":"20190307", "end_date":"20190608"}}
-{"op":"update", "match": {"file":"calendar.txt", "service_id":"6"}, "update":{"start_date":"20190307", "end_date":"20190608"}}
-{"op":"update", "match": {"file":"calendar.txt", "service_id":"7"}, "update":{"start_date":"20190307", "end_date":"20190608"}}
+# Guessing de:08235:10449:0:4,"Nagold, Uferstr.
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:10449:0:4"}, "update":{"stop_lat":"48.54923", "stop_lon":"8.71451"}}
+# de:08235:10451:0:3,"Nagold, Kreuzertal", location unknown, contacted info@vbn-bvn.de 
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:10451:0:3"}, "update":{"stop_lat":"48.55090", "stop_lon":"8.73782"}}
+# Remove de:08235:3181:0:3,"Speßhardt, Friedhof" as not in https://www.rexer.de/fileadmin/user_upload/630_632_Heunaden_-_Calw_-_Wim_-_Altb_-_ORB_ab170401.pdf
+{"op":"remove", "match":{"file":"stops.txt", "stop_id":"de:08235:3181:0:3"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:3"}, "update":{"stop_lat":"48.81608598485115", "stop_lon":"8.576657295597931", "stop_id":"de:08235:5660:2:1"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:4"}, "update":{"stop_lat":"48.81608598485115", "stop_lon":"8.576657295597931", "stop_id":"de:08235:5660:2:2"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:7330:0:3"}, "update":{"stop_lat":"48.6241902615607", "stop_lon":"8.73791091051151"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:7330:0:4"}, "update":{"stop_lat":"48.6241812690453", "stop_lon":"8.73791095696822"}}
+# Coordinates are estimates
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:7330:0:5"}, "update":{"stop_lat":"48.6241812690453", "stop_lon":"8.73791095696822"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:7330:0:7"}, "update":{"stop_lat":"48.6241812690453", "stop_lon":"8.73791095696822"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8235:10263:0:3"}, "update":{"stop_lat":"48.54465837060639", "stop_lon":"8.671057378464063", "stop_id":"de:08235:10263:0:3"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8235:2730:0:3"}, "update":{"stop_lat":"48.66741682564984", "stop_lon":"8.474423251273537", "stop_id":"de:08235:2730:0:3"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"gen:8235:2730:0:4"}, "update":{"stop_lat":"48.66741682564984", "stop_lon":"8.474423251273537", "stop_id":"de:08235:2730:0:4"}}
