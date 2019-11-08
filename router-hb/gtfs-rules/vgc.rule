@@ -16,12 +16,14 @@
 
 # Guessing de:08235:10449:0:4,"Nagold, Uferstr.
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:10449:0:4"}, "update":{"stop_lat":"48.54923", "stop_lon":"8.71451"}}
-# de:08235:10451:0:3,"Nagold, Kreuzertal", location unknown, contacted info@vbn-bvn.de 
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:10451:0:3"}, "update":{"stop_lat":"48.55090", "stop_lon":"8.73782"}}
-# Remove de:08235:3181:0:3,"Speßhardt, Friedhof" as not in https://www.rexer.de/fileadmin/user_upload/630_632_Heunaden_-_Calw_-_Wim_-_Altb_-_ORB_ab170401.pdf
-{"op":"remove", "match":{"file":"stops.txt", "stop_id":"de:08235:3181:0:3"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:3"}, "update":{"stop_lat":"48.81608598485115", "stop_lon":"8.576657295597931", "stop_id":"de:08235:5660:2:1"}}
-{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:4"}, "update":{"stop_lat":"48.81608598485115", "stop_lon":"8.576657295597931", "stop_id":"de:08235:5660:2:2"}}
+# de:08235:10451:0:3,"Nagold, Kreuzertal", Location via info@vbn-bvn.de 
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:10451:0:3"}, "update":{"stop_lat":"48.551247", "stop_lon":"8.737486"}}
+# Speßhardt location via info@vbn-bvn.de
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:3"}, "update":{"stop_lat":"48.714458", 
+"stop_lon":"8.690857", "stop_id":"de:08235:3181:0:3"}}
+# Eyachbrücke location via info@vbn-bvn.de
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:3"}, "update":{"stop_lat":"48.816358", "stop_lon":"8.577080", "stop_id":"de:08235:5660:2:1"}}
+{"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:5660:2:4"}, "update":{"stop_lat":"48.816326", "stop_lon":"8.577326", "stop_id":"de:08235:5660:2:2"}}
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:7330:0:3"}, "update":{"stop_lat":"48.6241902615607", "stop_lon":"8.73791091051151"}}
 {"op":"update", "match":{"file":"stops.txt", "stop_id":"de:08235:7330:0:4"}, "update":{"stop_lat":"48.6241812690453", "stop_lon":"8.73791095696822"}}
 # Coordinates are estimates
