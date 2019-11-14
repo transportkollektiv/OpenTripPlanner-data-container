@@ -83,7 +83,7 @@ gulp.task('gtfs:dl', gulp.series('del:id', function () {
     .pipe(gulp.dest(`${config.dataDir}/fit/gtfs`))
 }))
 
-// Add feedId to gtfs files in id dir, and moves files to directory 'fit'
+// Add feedId to gtfs files in id dir, and moves files to directory 'ready'
 gulp.task('gtfs:id', function () {
   return gulp.src([`${config.dataDir}/id/gtfs/*`])
     .pipe(setFeedIdTask())
