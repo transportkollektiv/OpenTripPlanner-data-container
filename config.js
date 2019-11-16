@@ -146,7 +146,7 @@ const dem = [
   { id: 'waltti', url: 'https://elevdata.blob.core.windows.net/elevation/waltti/waltti-10m-elevation-model.tif' },
   { id: 'hsl', url: 'https://elevdata.blob.core.windows.net/elevation/hsl/hsl-10m-elevation-model.tif' },
   // extracted and rehosted; originally from http://srtm.csi.cgiar.org/wp-content/uploads/files/srtm_5x5/TIFF/srtm_38_03.zip
-  { id: 'hb', url: 'https://leonard.io/herrenberg/srtm_38_03.tif' },
+  { id: 'hb', url: 'https://herrenberg.blob.core.windows.net/herrenberg-elevation/srtm_38_03.tif' },
 ]
 
 const constants = {

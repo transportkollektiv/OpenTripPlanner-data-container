@@ -21,9 +21,7 @@ const compareHashes = (headerHash, localFilePath) => {
     })
     s.on('end', function () {
       var fileHash = shasum.digest('base64')
-      // hardcoded because the server doesn't send it
-      console.log(fileHash);
-      if (fileHash === "VCQnNJ+LV3GYCrwhRCQezQ==") {
+      if (fileHash === headerHash) {
         resolve(true)
       } else {
         reject('end') // eslint-disable-line
