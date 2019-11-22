@@ -13,7 +13,7 @@ module.exports = function (configs, regexp) {
 
   let toProcess = configs.length
   configs.forEach(c => {
-    const org = process.env.ORG || 'hsldevcom'
+    const org = process.env.ORG || 'hsldevcom'
     const container = `${org}/opentripplanner-data-container-${c.id}:${seedTag}`
     process.stdout.write(`extracting data from ${container}...\n`)
     try {

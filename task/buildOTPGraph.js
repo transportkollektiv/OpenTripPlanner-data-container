@@ -1,4 +1,4 @@
-const otpMatching = require('otp-matching')
+// const otpMatching = require('otp-matching')
 const { zipWithGlob } = require('../util')
 const fs = require('fs')
 const { dataDir, hostDataDir, otpImage, constants } = require('../config.js')
@@ -17,7 +17,7 @@ const buildGraph = function (config) {
     }
   }
   const p = new Promise((resolve, reject) => {
-    const org = process.env.ORG || 'hsldevcom'
+    // const org = process.env.ORG || 'hsldevcom'
     const version = execSync(`docker pull ${otpImage};docker run --rm --entrypoint /bin/bash ${otpImage}  -c "java -jar otp-shaded.jar --version"`)
     const commit = version.toString().match(/commit: ([0-9a-f]+)/)[1]
 
@@ -99,7 +99,7 @@ module.exports = {
             }
           })
         })
-        return Promise.all([p1, p2, p3])//.then(() => otpMatching(`${dataDir}/build/${config.id}/router`, config.id))
+        return Promise.all([p1, p2, p3])// .then(() => otpMatching(`${dataDir}/build/${config.id}/router`, config.id))
       })
     })).then(() => {
       process.stdout.write('Created SUCCESS\n')
