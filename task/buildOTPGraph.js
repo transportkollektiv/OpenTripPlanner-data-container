@@ -1,9 +1,8 @@
 const otpMatching = require('otp-matching')
 const { zipWithGlob } = require('../util')
 const fs = require('fs')
-const { dataDir, hostDataDir, constants } = require('../config.js')
+const { dataDir, hostDataDir, otpImage, constants } = require('../config.js')
 const { postSlackMessage } = require('../util')
-const graphBuildTag = process.env.OTP_TAG || 'latest'
 /*
  * node.js wrapper for building OTP graph
  */
@@ -18,10 +17,11 @@ const buildGraph = function (config) {
     }
   }
   const p = new Promise((resolve, reject) => {
-    const version = execSync(`docker pull hsldevcom/opentripplanner:${graphBuildTag};docker run --rm --entrypoint /bin/bash hsldevcom/opentripplanner:${graphBuildTag}  -c "java -jar otp-shaded.jar --version"`)
+    const org = process.env.ORG || 'hsldevcom'
+    const version = execSync(`docker pull ${otpImage};docker run --rm --entrypoint /bin/bash ${otpImage}  -c "java -jar otp-shaded.jar --version"`)
     const commit = version.toString().match(/commit: ([0-9a-f]+)/)[1]
 
-    const buildGraph = exec(`docker run -v ${hostDataDir}/build:/opt/opentripplanner/graphs --rm --entrypoint /bin/bash hsldevcom/opentripplanner:${graphBuildTag}  -c "java -Xmx8g -jar otp-shaded.jar --build graphs/${config.id}/router"`, { maxBuffer: constants.BUFFER_SIZE })
+    const buildGraph = exec(`docker run -v ${hostDataDir}/build:/opt/opentripplanner/graphs --rm --entrypoint /bin/bash ${otpImage}  -c "java -Xmx${constants.OTP_MEMORY} -jar otp-shaded.jar --build graphs/${config.id}/router"`, { maxBuffer: constants.BUFFER_SIZE })
     // const buildGraph = exec('ls -la');
     const buildLog = fs.openSync(`${dataDir}/build/${config.id}/build.log`, 'w+')
 
@@ -99,7 +99,7 @@ module.exports = {
             }
           })
         })
-        return Promise.all([p1, p2, p3]).then(() => otpMatching(`${dataDir}/build/${config.id}/router`, config.id))
+        return Promise.all([p1, p2, p3])//.then(() => otpMatching(`${dataDir}/build/${config.id}/router`, config.id))
       })
     })).then(() => {
       process.stdout.write('Created SUCCESS\n')

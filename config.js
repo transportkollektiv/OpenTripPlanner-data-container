@@ -7,6 +7,18 @@
  */
 const src = (id, url, fit, rules) => ({ id, url, fit, rules })
 
+const HB_CONFIG = {
+  'id': 'hb',
+  'src': [
+    src('vvs', 'https://gtfs.mfdz.de/gtfs/VVS.with-shapes.gtfs.zip', false, ['router-hb/gtfs-rules/vvs.rule']),
+    src('naldo', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/naldo.zip', false, []),
+    src('vgc', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgc.zip', false, []),
+    src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, [])
+  ],
+  'osm': 'hb',
+  'dem': 'hb'
+}
+
 const HSL_CONFIG = {
   'id': 'hsl',
   'src': [
@@ -60,7 +72,7 @@ const WALTTI_CONFIG = {
 let ALL_CONFIGS
 
 const setCurrentConfig = (name) => {
-  ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG].reduce((acc, nxt) => {
+  ALL_CONFIGS = [WALTTI_CONFIG, HSL_CONFIG, FINLAND_CONFIG, HB_CONFIG].reduce((acc, nxt) => {
     if ((name && name.split(',').indexOf(nxt.id) !== -1) ||
       name === undefined) {
       acc.push(nxt)
@@ -126,16 +138,20 @@ const configMap = ALL_CONFIGS.map(cfg => cfg.src)
 
 const osm = [
   { id: 'finland', url: 'http://dev.hsl.fi/osm.finland/finland.osm.pbf' },
-  { id: 'hsl', url: 'http://dev.hsl.fi/osm.hsl/hsl.osm.pbf' }
+  { id: 'hsl', url: 'http://dev.hsl.fi/osm.hsl/hsl.osm.pbf' },
+  { id: 'hb', url: 'https://download.geofabrik.de/europe/germany/baden-wuerttemberg-latest.osm.pbf' }
 ]
 
 const dem = [
   { id: 'waltti', url: 'https://elevdata.blob.core.windows.net/elevation/waltti/waltti-10m-elevation-model.tif' },
-  { id: 'hsl', url: 'https://elevdata.blob.core.windows.net/elevation/hsl/hsl-10m-elevation-model.tif' }
+  { id: 'hsl', url: 'https://elevdata.blob.core.windows.net/elevation/hsl/hsl-10m-elevation-model.tif' },
+  // extracted and rehosted; originally from http://srtm.csi.cgiar.org/wp-content/uploads/files/srtm_5x5/TIFF/srtm_38_03.zip
+  { id: 'hb', url: 'https://herrenberg.blob.core.windows.net/herrenberg-elevation/srtm_38_03.tif' },
 ]
 
 const constants = {
-  BUFFER_SIZE: 1024 * 1024 * 32
+  BUFFER_SIZE: 1024 * 1024 * 32,
+  OTP_MEMORY: '8G'
 }
 
 module.exports = {
@@ -145,7 +161,8 @@ module.exports = {
   osmMap: osm.reduce((acc, val) => { acc[val.id] = val; return acc }, {}),
   dem,
   demMap: dem.reduce((acc, val) => { acc[val.id] = val; return acc }, {}),
-  dataToolImage: `hsldevcom/otp-data-tools:${process.env.TOOLS_TAG || 'latest'}`,
+  dataToolImage: `${process.env.ORG || 'hsldevcom'}/otp-data-tools:${process.env.TOOLS_TAG || 'latest'}`,
+  otpImage: `${process.env.ORG || 'hsldevcom'}/opentripplanner:${process.env.OTP_TAG || 'latest'}`,
   dataDir: process.env.DATA || `${process.cwd()}/data`,
   hostDataDir: process.env.HOST_DATA || `${process.cwd()}/data`,
   setCurrentConfig: setCurrentConfig,

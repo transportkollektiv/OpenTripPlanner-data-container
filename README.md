@@ -34,6 +34,7 @@ It is possible to change the behaviour of the data builder by defining environme
 * "DOCKER_USER" defines username for authenticating to docker hub.
 * "DOCKER_AUTH" defines password for authenticating to docker hub.
 * (Optional, default latest and tag based on date) "DOCKER_TAG" defines what will be the updated docker tag of the data container images in the remote container registry.
+* (Optional, default HSLdevcom) "ORG" defines the organization from which to pull opentripplanner and opentripplaner-data-tools images.
 * (Optional, default latest) "SEED_TAG" defines what version of data container should be used for seeding.
 * (Optional, default latest) "OTP_TAG" defines what version of OTP is used for testing and building graphs.
 * (Optional, default latest) "TOOLS_TAG" defines what version of otp-data-tools image is used for testing.

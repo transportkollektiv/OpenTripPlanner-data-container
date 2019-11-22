@@ -83,7 +83,7 @@ gulp.task('gtfs:dl', gulp.series('del:id', function () {
     .pipe(gulp.dest(`${config.dataDir}/fit/gtfs`))
 }))
 
-// Add feedId to gtfs files in id dir, and moves files to directory 'fit'
+// Add feedId to gtfs files in id dir, and moves files to directory 'ready'
 gulp.task('gtfs:id', function () {
   return gulp.src([`${config.dataDir}/id/gtfs/*`])
     .pipe(setFeedIdTask())
@@ -154,5 +154,6 @@ gulp.task('router:buildGraph', gulp.series('router:copy', function () {
     .pipe(gulp.dest(`${config.dataDir}/build/waltti`))
     .pipe(gulp.dest(`${config.dataDir}/build/finland`))
     .pipe(gulp.dest(`${config.dataDir}/build/hsl`))
+    .pipe(gulp.dest(`${config.dataDir}/build/hb`))
   return buildOTPGraphTask(config.ALL_CONFIGS())
 }))
