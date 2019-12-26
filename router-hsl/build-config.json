@@ -5,5 +5,6 @@
   "subwayAccessTime": 0,
   "osmWayPropertySet": "finland",
   "fares": "HSL",
-  "elevationUnitMultiplier": 0.1
+  "elevationUnitMultiplier": 0.1,
+  "vertexConnector": "HSL"
 }

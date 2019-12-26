@@ -41,13 +41,15 @@ It is possible to change the behaviour of the data builder by defining environme
 * (Optional, default ${process.cwd()}/data) "HOST_DATA" defines base path for volume directories.
 * (Optional, default 'finland, waltti, hsl') "ROUTERS" defines which data containers are being built and deployed.
 * (Optional, default ${process.cwd()}/data) "DATA" defines base path for data directories in container's file system.
-* (Optional, default '0 0 3 * * *') "CRON" defines when data build is being run.
+* (Optional, default 23:00:00) "BUILD_TIME" defines when data build is being run. Uses UTC time.
+* (Optional, default dev) "BUILDER_TYPE" used as a postfix to slack bot name
 * (Optional, default {}) "EXTRA_SRC" defines gtfs src values that should be overridden or completely new src that should be added with unique id. "routers" is always a mandatory field. Example format:
   - `{"FOLI": {"url": "http://data.foli.fi/gtfs/gtfs.zip",  "fit": false, "rules": ["router-waltti/gtfs-rules/waltti.rule"], "routers": ["hsl", "finland"]}}`
   - You can remove a src by including "remove": true, `{"FOLI": {"remove": true, "routers": ["hsl"]}`
 * (Optional, default {}) "EXTRA_UPDATERS" defines router-config.json updater values that should be overridden or completely new updater that should be added with unique id. "routers" is always a mandatory field. Example format:
   - `{"turku-alerts": {"type": "real-time-alerts", "frequencySec": 30, "url": "https://foli-beta.nanona.fi/gtfs-rt/reittiopas", "feedId": "FOLI", "fuzzyTripMatching": true, "routers": ["waltti"]}}`
   - You can remove a src by including "remove": true, `{"turku-alerts": {"remove": true, "routers": ["waltti"]}`
+* (Optional, default 1.23) "DOCKER_API_VERSION" defines what docker API version is used in docker commands.
 
 #### Data processing steps
 
@@ -112,3 +114,4 @@ Each data container image runs a http server listening to port 8080, serving bot
 ### otp-data-tools
 Contains tools for gtfs manipulation, such as One Bus Away gtfs filter.
 These tools are packaged inside docker container and are used dunring the data build process.
+

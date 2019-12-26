@@ -3,7 +3,7 @@
 #build errors should not stop the continuous build loop
 set +e
 
-export DOCKER_API_VERSION="1.23"
+export DOCKER_API_VERSION=${DOCKER_API_VERSION:-1.23}
 
 #How long the build can last before it is considered frozen (default 5 hours)
 MAX_TIME=${MAX_TIME:-18000}
@@ -15,7 +15,7 @@ BUILD_INTERVAL_SECONDS=$((($BUILD_INTERVAL - 1)*24*3600))
 BUILD_TIME=${BUILD_TIME:-23:00:00}
 #option to launch build automatically at early hours
 #as a mitigation to crashed builds. zero value disables this feature
-AUTO_REBUILD_HOUR=${AUTO_REBUILD_HOUR:-6}
+AUTO_REBUILD_HOUR=${AUTO_REBUILD_HOUR:-3}
 BUILDER_TYPE=${BUILDER_TYPE:-dev}
 
 # param: message text content
@@ -34,6 +34,10 @@ if [[ "$HOUR" -lt "$AUTO_REBUILD_HOUR" ]]; then
     BUILD_AT_LAUNCH=1
 else
     BUILD_AT_LAUNCH=0
+fi
+
+if [ -n "$MESOS_CONTAINER_NAME"  ]; then
+  echo "search marathon.l4lb.thisdcos.directory" >> /etc/resolv.conf
 fi
 
 # run data build loop forever, unless build interval is set to zero
@@ -55,7 +59,7 @@ while true; do
     echo "** Launching OTP data builder"
 
     #note: busybox timeout
-    timeout -t $MAX_TIME node index.js once
+    timeout $MAX_TIME node index.js once
     SUCCESS=$?
 
     if [ $SUCCESS = 143 ]; then
@@ -71,7 +75,7 @@ while true; do
     if [ $SUCCESS -ne 0 ]; then
         # try once more
         echo "** Restarting builder once"
-        timeout -t $MAX_TIME  node index.js once
+        timeout $MAX_TIME  node index.js once
         SUCCESS=$?
 
         if [ $SUCCESS = 143 ]; then

@@ -1,6 +1,7 @@
 const JSZip = require('jszip')
 const fs = require('fs')
 const globby = require('globby')
+const crypto = require('crypto')
 
 const IncomingWebhook = require('@slack/client').IncomingWebhook
 const url = process.env.SLACK_WEBHOOK_URL || null
@@ -45,11 +46,40 @@ const postSlackMessage = (message) => {
   })
 }
 
+/**
+ * Compare Content-MD5 header md5 hash value to hash value calculated from local a copy of the file.
+ */
+const compareHashes = (headerHash, localFilePath) => {
+  return new Promise((resolve, reject) => {
+    if (headerHash === undefined) {
+      return resolve()
+    }
+    let shasum = crypto.createHash('md5')
+    let s = fs.ReadStream(localFilePath)
+    s.on('error', function (err) {
+      process.stdout.write(err)
+      reject('error') // eslint-disable-line
+    })
+    s.on('data', function (data) {
+      shasum.update(data)
+    })
+    s.on('end', function () {
+      var fileHash = shasum.digest('base64')
+      if (fileHash === headerHash) {
+        resolve()
+      } else {
+        reject('end') // eslint-disable-line
+      }
+    })
+  })
+}
+
 module.exports = {
   zipDir: (zipFile, dir, cb) => {
     zipWithGlob(zipFile, [`${dir}/*`], undefined, cb)
   },
   zipWithGlob,
   routerDir: (config) => `router-${config.id}`,
-  postSlackMessage
+  postSlackMessage,
+  compareHashes
 }

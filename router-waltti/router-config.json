@@ -64,6 +64,14 @@
       "fuzzyTripMatching": false
     },
     {
+      "id": "joensuu-alerts",
+      "type": "real-time-alerts",
+      "frequencySec": 30,
+      "url": "http://digitransit-proxy:8080/out/jojo.mattersoft.fi/api/gtfsrealtime/v1.0/feed/servicealert",
+      "feedId": "Joensuu",
+      "fuzzyTripMatching": false
+    },
+    {
       "id": "lappeenranta-trip-updates",
       "type": "stop-time-updater",
       "frequencySec": 60,
@@ -94,7 +102,17 @@
       "type": "bike-rental",
       "sourceType": "smoove",
       "url": "http://digitransit-proxy:8080/out/data.foli.fi/citybike/smoove",
-      "frequencySec": 10
+      "frequencySec": 10,
+      "network": "turku"
+    },
+    {
+      "id": "linkki-trip-updates",
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "http://digitransit-proxy:8080/out/linkki.mattersoft.fi/api/gtfsrealtime/v1.0/feed/tripupdate",
+      "feedId": "LINKKI",
+      "fuzzyTripMatching": false
     },
     {
       "id": "linkki-alerts",
@@ -103,6 +121,31 @@
       "url": "http://digitransit-proxy:8080/out/linkki.mattersoft.fi/api/gtfsrealtime/v1.0/feed/servicealert",
       "feedId": "LINKKI",
       "fuzzyTripMatching": false
+    },
+    {
+      "id": "oulu-bike-rental",
+      "type": "bike-rental",
+      "sourceType": "next-bike",
+      "url": "http://digitransit-proxy:8080/out/poland.nextbike.net/maps/nextbike-official.xml?domains=fo",
+      "frequencySec": 10,
+      "network": "oulu"
+    },
+    {
+      "id": "lahti-alerts",
+      "type": "real-time-alerts",
+      "frequencySec": 30,
+      "url": "http://digitransit-proxy:8080/out/lsl.mattersoft.fi/api/gtfsrealtime/v1.0/feed/servicealert",
+      "feedId": "Lahti",
+      "fuzzyTripMatching": false
+    },
+    {
+      "id": "tampere-rail-trip-updates",
+      "type": "stop-time-updater",
+      "frequencySec": 60,
+      "sourceType": "gtfs-http",
+      "url": "http://raildigitraffic2gtfsrt:8080/tampere/0/1/0/1",
+      "feedId": "TampereVR",
+      "fuzzyTripMatching": true
     }
   ]
 }

@@ -3,7 +3,7 @@ set +e
 
 # set defaults
 ORG=${ORG:-hsldevcom}
-JAVA_OPTS=${JAVA_OPTS:--Xmx7g}
+JAVA_OPTS=${JAVA_OPTS:--Xmx10g}
 ROUTER_NAME=${1:-hsl}
 TEST_TAG=${2:-latest}
 TOOLS_TAG=${3:-latest}
@@ -65,7 +65,7 @@ elif [ "$ROUTER_NAME" == "hb" ]; then
     MAX_WAIT=30
     URL="http://$IP:8080/otp/routers/default/plan?fromPlace=48.59395615083%2C8.862625879520001&toPlace=48.5949067621%2C8.86859069301"
 else
-    MAX_WAIT=40
+    MAX_WAIT=60
     URL="http://$IP:8080/otp/routers/default/plan?fromPlace=60.19812876015124%2C24.934051036834713&toPlace=60.218630210423306%2C24.807472229003906"
 fi
 

@@ -6,6 +6,7 @@ const dlBlob = require('./task/DownloadDEMBlob')
 const { setFeedIdTask } = require('./task/setFeedId')
 const { OBAFilterTask } = require('./task/OBAFilter')
 const { fitGTFSTask } = require('./task/MapFit')
+const { validateBlobHash } = require('./task/BlobValidation')
 const { testGTFSFile } = require('./task/GTFSTest')
 const Seed = require('./task/Seed')
 const prepareRouterData = require('./task/prepareRouterData')
@@ -23,6 +24,7 @@ gulp.task('osm:update', function () {
   const urls = Object.keys(map).map(key => config.osmMap[key])
   return dl(urls, true, true)
     .pipe(gulp.dest(`${config.dataDir}/downloads/osm`))
+    .pipe(validateBlobHash())
     .pipe(testGTFSFile())
     .pipe(gulp.dest(`${config.dataDir}/ready/osm`))
 })
@@ -33,6 +35,9 @@ gulp.task('osm:update', function () {
 gulp.task('dem:update', function () {
   const map = config.ALL_CONFIGS().map(cfg => cfg.dem).reduce((acc, val) => { acc[val] = true; return acc }, {})
   const urls = Object.keys(map).map(key => config.demMap[key]).filter((url) => (url !== undefined))
+  if (urls.length === 0) {
+    return Promise.resolve()
+  }
   const demDownloadDir = `${config.dataDir}/downloads/dem/`
   if (!fs.existsSync(demDownloadDir)) {
     execSync(`mkdir -p ${demDownloadDir}`)
