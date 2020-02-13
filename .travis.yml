@@ -19,6 +19,8 @@ env:
   global:
   - ROUTERS=hb
   - ORG=mfdz
+  # this is of course not the real feed URL but just a random public one so the build works
+  - MFDZ_GTFS_URL=https://transitfeeds.com/p/b-rgerbus-leupoldsgr-n-landkreis-hof/1126/latest/download
 
 script:
   - npm run test && ./travis-build.sh
