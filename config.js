@@ -13,7 +13,8 @@ const HB_CONFIG = {
     src('vvs', 'https://gtfs.mfdz.de/gtfs/VVS.with-shapes.gtfs.zip', false, ['router-hb/gtfs-rules/vvs.rule']),
     src('naldo', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/naldo.zip', false, []),
     src('vgc', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgc.zip', false, []),
-    src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, [])
+    src('vgf', 'https://www.nvbw.de/fileadmin/nvbw/open-data/Fahrplandaten_mit_Liniennetz/vgf.zip', false, []),
+    src('mfdz', process.env.MFDZ_GTFS_URL, false, [])
   ],
   'osm': 'hb',
   'dem': 'hb'
