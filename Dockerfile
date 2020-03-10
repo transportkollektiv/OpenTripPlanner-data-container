@@ -22,4 +22,4 @@ ADD otp-data-container /opt/otp-data-builder/otp-data-container
 
 RUN npm install
 
-CMD bash ./run-builder.sh
+CMD bash node index.js once
