@@ -19,7 +19,7 @@ const buildGraph = function (config) {
   const p = new Promise((resolve, reject) => {
     // const org = process.env.ORG || 'hsldevcom'
     const version = execSync(`docker pull ${otpImage};docker run --rm --entrypoint /bin/bash ${otpImage}  -c "java -jar otp-shaded.jar --version"`)
-    const commit = version.toString().match(/commit: ([0-9a-f]+)/)[1]
+    const commit = version.toString().match(/version: (.+)/)[1]
 
     const buildGraph = exec(`docker run -v ${hostDataDir}/build:/opt/opentripplanner/graphs --rm --entrypoint /bin/bash ${otpImage}  -c "java -Xmx${constants.OTP_MEMORY} -jar otp-shaded.jar --build graphs/${config.id}/router"`, { maxBuffer: constants.BUFFER_SIZE })
     // const buildGraph = exec('ls -la');
